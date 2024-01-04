@@ -10,6 +10,13 @@ only inside of function
 a, b := 69, 71
 ```
 
+- `a = 1` => a is equal to 1
+- `b := 1` b is _the thing that_ equal to 1
+
+Meaning that:
+- `=` "is _now_ equal", focuses on setting value to something
+- where as `:=` "is _the thing that_ equals" focuses on declaring a thing with a value (focus both on an entity and its value) 
+
 ### type omittion
 like in function parameters if multiple variables with the same type go sequentially, then the type specification is needed only at the end
 
