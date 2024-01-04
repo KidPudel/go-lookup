@@ -45,3 +45,13 @@ if x := math.Pow(5, x); x < 25 {
   fmt.Printf("%v is not enough\n", x)
 }
 ```
+
+# if and else
+else also share variables that declared in if
+```go
+if x := math.Pow(5, x); x < 25 {
+  fmt.Printf("%v is not enough\n", x)
+} else {
+  fmt.Println("%v is enough\n", x)
+}
+```
