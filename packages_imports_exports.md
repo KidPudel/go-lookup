@@ -8,10 +8,23 @@ Logically if we have package `rand` for random that is LOGICALLY nested inside o
 `import "math/rand"`  
 
 
+# Imports
+
 ## multiple imports
 ```go
 import (
-  "fmt" <- package that is responsible for ForMaTing, writing, reading inputs, files
-  "math/rand" <- random
+  "fmt" // package that is responsible for ForMaTing, writing, reading inputs, files
+  "math/rand" // random
 )
+```
+
+## internal
+if package placed inside of "_internal_" folder, then only packages that are placed at the root of the internal could import it
+
+
+# Exports
+Exported must start with a capital latter, so `pizza`, `pi` won't be exportable, and `Pizza`, `Pi` will
+```go
+menu.pizza // error
+menu.Pizza // ok
 ```
