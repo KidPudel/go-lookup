@@ -10,8 +10,9 @@ only inside of function
 a, b := 69, 71
 ```
 
-- `a = 1` => a is equal to 1
-- `b := 1` b is _the thing that_ equal to 1
+- `a := 1` => a is the the thing that equals 1
+- `a = 2` => a is equal to 2
+
 
 Meaning that:
 - `=` "is _now_ equal", focuses on setting value to something
