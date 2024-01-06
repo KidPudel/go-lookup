@@ -10,6 +10,7 @@ func main() {
 }
 
 '''
-
+'hello'
+'world'
 ### stacking defers
 defer call's pushed onto a stack, meaning that they will be executed in last-in-first-out maneer
