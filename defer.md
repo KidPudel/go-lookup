@@ -2,15 +2,16 @@
 
 The deferred call's arguments are evaluated immediately, but the function call is not executed until surrounding function returns
 
-'''go
+```go
 func main() {
     defer fmt.Println("world")
     
     fmt.Println("hello")
 }
+```
+prints  
+`hello`  
+`world`
 
-'''
-'hello'
-'world'
 ### stacking defers
 defer call's pushed onto a stack, meaning that they will be executed in last-in-first-out maneer
