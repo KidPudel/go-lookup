@@ -1,0 +1,4 @@
+- camelCase: what you don't want to export (make importable)
+- PascakCase: what you want to export
+- SCREAMING_SNAKE_CASE: constants
+- is, has, can, allow: bool
