@@ -68,6 +68,7 @@ Slices support _slice_, meaning, another way we can get a slice, is by slicing s
 middleMatches := initialMatches[2:5] // [0 0 0]
 a := collection[:5] // slices to 5th index excluding
 b := colllection[2:] // slices from 2nd till the end
+c := collection[:] // slices whole collection
 ```
 
 #### `"slices"` package's useful utility functions
