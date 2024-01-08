@@ -31,7 +31,7 @@ func main() {
 
   adult := newPerson("Jimmy") // &{Jimmy, 18}
 
-  dog = struct {
+  dog := struct {
     breed string
     age int
   } {
