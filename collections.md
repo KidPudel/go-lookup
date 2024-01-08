@@ -6,6 +6,7 @@ fmt.Println(initialMatches) // [0 0 0 0 0 0 0 0 0 0]
 initialMatches[1] = 100
 fmt.Println(initialMatches) // [0 100 0 0 0 0 0 0 0 0]
 
+// array literal
 citiesVisitedInPast := [4]string{"mexico", "new-york", "tokyo", "shanghai"}
 ```
 > NOTE: by default, array is zero-valued, so for int's it's 0
@@ -37,6 +38,7 @@ Unlike array, uninitialized slice is equal to `nil` and its length is 0
 var scores []int
 fmt.Println(scores, scores == nil, len(scores)) // [] true 0
 
+// slice literal
 slice := []int{1, 2, 3, 4, 5} // [1 2 3 4 5]
 ```
 
