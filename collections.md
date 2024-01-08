@@ -139,3 +139,27 @@ func main() {
   }
   
 }
+```
+
+### mutating
+insert or update value
+```go
+m[key] = value
+```
+
+retrieve an element
+```go
+answer := m[key]
+```
+
+delete an element
+```go
+delete(m, key)
+```
+
+key is present, with 2 value asignments
+```go
+elem, ok := m[key]
+```
+`ok`, true or false, if false, then `elem` is zero value of value type
+
