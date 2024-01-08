@@ -173,3 +173,4 @@ project-root-directory/
     ...
   ... the project's other directories with non-Go code
 ```
+> ADVICE: if repository grows packages that is worth to share with other projects, it's best to sdplit them to separate modules
