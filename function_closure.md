@@ -18,7 +18,7 @@ func adder() func (int) int {
 func main() {
   increment, decrement := adder(), adder()
   for i := 0; i < 10; i++ {
-    fmt.Println(increment(i), decrement(i*2)
+    fmt.Println(increment(i), decrement(i*2))
   }
 }
 ```
