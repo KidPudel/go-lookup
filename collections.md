@@ -29,7 +29,7 @@ for i := 0; i < 2; i++ {
 ## Slice (dynamically sized collection)
 > NOTE: much more common than the array
 
-> Unlike array, slice doesn't actually store any data, it's just describes a section of underlying array. **_Slices are references to arrays_**
+> **IMPORTANT**: Unlike array, slice doesn't actually store any data, it's just describes a section of underlying array. **_Slices are references to arrays_** so by changing value of the slice, you change value of the array
 
 syntax: `[]T`  
 Unlike array, uninitialized slice is equal to `nil` and its length is 0
