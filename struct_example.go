@@ -40,4 +40,12 @@ func main() {
   }
   fmt.Println(dog) // {Labrador, 3}
 
+
+  // at the top-level type is just a type, so you can omit from the elements of literals
+
+  people := map[string]person{
+    "wife" : { name: "Jinny", age: 26 },
+    "husband" : { name: "Harry", age: 27 },
+  }
+
 }
