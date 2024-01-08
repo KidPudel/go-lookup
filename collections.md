@@ -131,5 +131,11 @@ func main() {
   coordinates = nmake(map[string]Vertex)
   coordinates["Canada"] = Vertex{Lat: 56.1304, Long: 106.3468}
   fmt.Println(coordinates["Canada"])
+
+  // map literals
+  people := map[string]int{
+    "Jinny" : 13,
+    "Harry" : 14,
+  }
   
 }
