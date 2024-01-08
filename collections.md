@@ -46,6 +46,11 @@ slice := []int{1, 2, 3, 4, 5} // [1 2 3 4 5]
 ```go
 scores := make([]int, 3) // [0 0 0], cap (capacity) = 3, len = 3
 ```
+
+#### length vs capacity
+- length is the number of elements in the slice
+- capacity is the number of elements in the underlying array (how much memory is allocated, and if we exceed, create new)
+
 #### Appending a Slice
 Slices support appending new values to the array (dynamicly sized) with function `append`.  
 
