@@ -9,3 +9,24 @@
 ### aliases
 - `byte`, is for `uint8`
 - `rune`, is for `int32` that represents _unicode code point_
+
+
+## Create your own types
+To define a new type:
+1. just start with `type`
+2. give it a name `foo`
+3. specify a type on which a new type is going to be based
+
+```go
+type newInt int
+
+type person struct {
+  name string
+  age int
+}
+
+type (
+  newString string // type definition
+  newFloat = float64 // type aleas (doen't create a new type and doesn't need a conversion)
+)
+```
