@@ -1,4 +1,5 @@
 // structs are to create a TYPE of collection of fields (typed collection)
+// So yeah, we create a new type that holds a collection  of fileds, a structure of data!
 
 type person struct {
   name string
