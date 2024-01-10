@@ -25,3 +25,16 @@ func (v *Vertex) Abs() float64 {
   }
 }
 ```
+
+
+using it
+```go
+func main() {
+  var a Abser
+  v := Vertex{3, 4}
+
+  a = &v // OK, implements all signatures (Abs() -> func (v *Vertex) Abs() float64)
+  a = v // ERROR, v Vertex does not implement Abs, because of (v *Vertex)
+}
+```
+> NOTE: In general, all methods of the same type should have a value OR pointer receiver. Not the mixture of both
