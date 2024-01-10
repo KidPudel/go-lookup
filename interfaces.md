@@ -60,5 +60,5 @@ func main() {
 
 
 ## Interface values
-Interface values could be thought as a tuple (value, concrete type), where value is of type of underlying value.  
-**_So by calling interface method, we call method of underlying value that has the same name_**
+Interface values (underlying type) could be thought as tuple (`value of underlying type`, `concrete underlying type`).  
+> **_So calling interface method, we call underlying method that has the same name_**
