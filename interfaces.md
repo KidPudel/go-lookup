@@ -45,7 +45,7 @@ func main() {
   var a Abser
   v := Vertex{3, 4}
 
-  a = &v // OK, implements all signatures (Abs() -> func (v *Vertex) Abs() float64)  = (&{3, 4}, *main.Vetex)
+  a = &v // OK, implements all signatures (Abs() -> func (v *Vertex) Abs() float64)  = (&{3 4}, *main.Vetex)
   a = v // ERROR, v Vertex does not implement Abs, because of (v *Vertex)
 
   f := CustomFloat(-5.4)
@@ -109,5 +109,29 @@ func main() {
   var i I
   describe(i) // (<nil>, <nil>)
   i.Test() // error
+}
+```
+
+### empty interface
+Interface that doesn't have any method signatures, meaning that to implement this interface type must have at least 0 methods, therefore any type implements this interface.  
+Empty interface can take any value. **_In practice it is used to take unknown types, for example fmt.Println(), takes any number of arguments of type `interface{}`_**
+
+```go
+type Person struct {
+  name string
+  age int
+}
+
+func main() {
+  jinny := Person{"Jinny", 19}
+  describe(&jinny) // (&{"Jinny 19", *main.Person})
+
+  var i interface{}
+
+  describe(i) // (<nil>, <nil>)
+}
+
+func describe(i interface{}) {
+  fmt.Printf("(%v, %T)\n", i, i)
 }
 ```
