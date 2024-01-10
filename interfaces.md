@@ -92,6 +92,10 @@ func main() {
   describe(i) // (<nil>, *main.Person)
   i.Test() // p is <nil>
 }
+
+func describe(i I) {
+  fmt.Printf("(%v, %T)\n", i, i)
+}
 ```
 
 ### Interface's nil values
