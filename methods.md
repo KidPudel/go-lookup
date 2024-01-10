@@ -58,3 +58,8 @@ func main() {
 	fmt.Println(number)
 }
 ```
+
+
+# What receiver all methods of type should have
+
+> NOTE: In general, all methods of the same type should have a value OR pointer receiver. Not the mixture of both
