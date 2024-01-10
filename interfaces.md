@@ -11,6 +11,7 @@ type Abser interface {
 
 define types that implement signatures of interface
 ```go
+// type 1
 type Vetex struct {
   x float64
   y float64
@@ -23,6 +24,17 @@ func (v *Vertex) Abs() float64 {
   if v.y < 0 {
     v.y = v.y * -1
   }
+  return 1.0 // ok
+}
+
+// type 2
+type CustomFloat float64
+
+func (f CustomFloat) Abs() float64 {
+  if f < 0 {
+    f = f * -1
+  }
+  return f
 }
 ```
 
@@ -35,6 +47,13 @@ func main() {
 
   a = &v // OK, implements all signatures (Abs() -> func (v *Vertex) Abs() float64)
   a = v // ERROR, v Vertex does not implement Abs, because of (v *Vertex)
+
+  f := CustomFloat(-5.4)
+
+  a = f // OK, CustomFloat type implents Abs
 }
 ```
 > NOTE: In general, all methods of the same type should have a value OR pointer receiver. Not the mixture of both
+
+> There is no explicit declaration of intent that something implements interface, no `implements` keyboard.
+> So type impments interface just by implementing its methods
