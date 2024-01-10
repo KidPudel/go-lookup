@@ -64,7 +64,7 @@ Interface values (underlying type) could be thought as tuple (`value of underlyi
 > **_So calling interface method, we call underlying method that has the same name_**
 
 
-### nil values
+### Underlying nil values
 In other languages that would cause a null pointer, but in Go it's common to write methods that gracefully handle nil value
 ```go
 type I interface {
@@ -93,3 +93,6 @@ func main() {
   i.Test() // p is <nil>
 }
 ```
+
+### Interface's nil values
+If interface's value itself is nil, meaning that it has nor value, nor underlying type, when calling method, it would be a run-time error, since no method is to call
