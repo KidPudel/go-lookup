@@ -57,3 +57,8 @@ func main() {
 
 > There is no explicit declaration of intent that something implements interface, no `implements` keyboard.
 > So type impments interface just by implementing its methods
+
+
+## Interface values
+Interface values could be thought as a tuple (value, concrete type), where value is of type of underlying value.  
+**_So by calling interface method, we call method of underlying value that has the same name_**
