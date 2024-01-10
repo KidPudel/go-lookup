@@ -96,3 +96,14 @@ func main() {
 
 ### Interface's nil values
 If interface's value itself is nil, meaning that it has nor value, nor underlying type, when calling method, it would be a run-time error, since no method is to call
+```go
+type I interface {
+  Test()
+}
+
+func main() {
+  var i I
+  describe(i) // (<nil>, <nil>)
+  i.Test() // error
+}
+```
