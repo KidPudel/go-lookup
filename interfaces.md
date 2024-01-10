@@ -45,12 +45,12 @@ func main() {
   var a Abser
   v := Vertex{3, 4}
 
-  a = &v // OK, implements all signatures (Abs() -> func (v *Vertex) Abs() float64)
+  a = &v // OK, implements all signatures (Abs() -> func (v *Vertex) Abs() float64)  = (&{3, 4}, *main.Vetex)
   a = v // ERROR, v Vertex does not implement Abs, because of (v *Vertex)
 
   f := CustomFloat(-5.4)
 
-  a = f // OK, CustomFloat type implents Abs
+  a = f // OK, CustomFloat type implents Abs 
 }
 ```
 > NOTE: In general, all methods of the same type should have a value OR pointer receiver. Not the mixture of both
@@ -59,6 +59,37 @@ func main() {
 > So type impments interface just by implementing its methods
 
 
-## Interface values
+## Interface's _true_ values
 Interface values (underlying type) could be thought as tuple (`value of underlying type`, `concrete underlying type`).  
 > **_So calling interface method, we call underlying method that has the same name_**
+
+
+### nil values
+In other languages that would cause a null pointer, but in Go it's common to write methods that gracefully handle nil value
+```go
+type I interface {
+  Test()
+}
+
+type Person struct {
+  name string
+  age int
+}
+
+func (p *Person) Test() {
+  if p == nil {
+    fmt.Println("p is <nil>")
+    return
+  }
+  fmt.Println(p.name, p.age)
+}
+
+func main() {
+  var i I
+  var p Person
+
+  i = &p
+  describe(i) // (<nil>, *main.Person)
+  i.Test() // p is <nil>
+}
+```
