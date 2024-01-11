@@ -32,23 +32,3 @@ type (
 ```
 
 
-## Stringers
-One of the most ubiquitous interfaces is `Stringer` _already defined_ by `fmt`.  
-`Stringer` is type that is responsible for descrybing underlying, implemention type as a string
-
-```go
-type person struct {
-  name string
-  age int
-}
-
-func (p *person) String() string {
-  // here we can override default behaiviour
-  return fmt.Sprintf("This person's name is %v, their age is %v", p.name, p.age)
-}
-
-func main() {
-  p := person{name: "Ron", age: 20}
-  fmt.Println(p) // This person's name is Ron, their age is 20
-}
-```
