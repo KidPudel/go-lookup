@@ -1,4 +1,4 @@
-# type paremeters
+w# type paremeters
 Placed before function's parameters
 ```go
 func Index[T comparable](sl []T, element T) {}
@@ -16,5 +16,14 @@ func Index[T comaparable](s []T, e T) int {
     }
   }
   return -1
+}
+```
+
+# Generic types
+Types can be parameterized with type parameters, to implement generic data types
+```go
+type List[T any] struct {
+  next *List[T]
+  val T
 }
 ```
