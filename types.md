@@ -16,7 +16,7 @@ To define a new type:
 1. just start with `type`
 2. give it a name `foo`
 3. specify a type on which a new type is going to be based
-
+> SUMMARY: blueprint, define a type, by giving it's name and what it is going to be at a base
 ```go
 type newInt int
 
