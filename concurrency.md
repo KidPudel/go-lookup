@@ -33,22 +33,22 @@ While executing happens in a new goroutine.
 
 ### send data through channel
 ```go
-func countSum(arr []int, c chan int) {
+func countSum(arr []int, ch chan int) {
   sum := 0
   for i, v := range arr {
     sum += v
   }
   // sending data through conduct
-  c <- sum
+  ch <- sum
 }
 ```
 
 ### receiving data from channel
 ```go
-rightSide := <-c
+rightSide := <-ch
 ```
 
 ## Creating channel
 ```go
-c := make(chan int)
+ch := make(chan int)
 ```
