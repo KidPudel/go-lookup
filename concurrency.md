@@ -77,7 +77,7 @@ Here you may ask: _"How does `x, y := <-ch, <-ch` works, that launching 2 gorout
 After starting both goroutines, we encounter first receive operation (block main function), meanwhile, there are 2 goroutines that are executed, and which ever executes first, will go to the first receiver, and we encounter next receiver and giving it the next _send_ data.
 
 
-# Buffered channels
+## Buffered channels
 We can buffer a channel, by adding a number of buffers as a 2nd parameter in `make` function. Sends won't block until buffer is full, and receives won't block until buffer is empty
 ```go
 bCh := make(chan int, 2)
@@ -92,3 +92,45 @@ y := <-bCh // 5
 ```
 
 if `bCh` channel would have 1 buffer, then it would cause a **deadlock**
+
+## Closing and Ranges
+We can close a channel, to indicate that there is no values will be send.
+> NOTE: Only sender can close channel, otherwise, sending to closed channel, will cause a panic
+
+```go
+package main
+
+import "fmt"
+
+func fibonacci(ch chan int) {
+	x, y := 0, 1
+	for i := 0; i < cap(ch); i++ {
+		ch <- x
+		x, y = y, x+y
+	}
+	close(ch)
+}
+
+func main() {
+	fmt.Println("")
+	ch := make(chan int, 10)
+
+	go fibonacci(ch)
+
+	fmt.Println("do some for me")
+
+	for v := range ch {
+		fmt.Println(v)
+	}
+
+	possibleValue, ok := <-ch
+
+	if !ok {
+		fmt.Println("Already closed")
+	} else {
+		fmt.Println(possibleValue)
+	}
+
+}
+
+```
