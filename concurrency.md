@@ -75,6 +75,20 @@ fmt.Println(x, y, x+y) // 17 -4 13
 Here you may ask: _"How does `x, y := <-ch, <-ch` works, that launching 2 goroutines with one channel, still asigns each variable the **correct part** of the `s` slice?"_.  
 
 After starting both goroutines, we encounter first receive operation (block main function), meanwhile, there are 2 goroutines that are executed, and which ever executes first, will go to the first receiver, and we encounter next receiver and giving it the next _send_ data.
-```go
 
+
+# Buffered channels
+We can buffer a channel, by adding a number of buffers as a 2nd parameter in `make` function. Sends won't block until buffer is full, and receives won't block until buffer is empty
+```go
+bCh := make(chan int, 2)
+
+bCh <- 10
+// won't be blocked, bacause buffer is still have 1 space left
+bCh <- 5
+
+x := <-bCh // 10
+// won't be blocked, because there is still 1 value left
+y := <-bCh // 5
 ```
+
+if `bCh` channel would have 1 buffer, then it would cause a **deadlock**
