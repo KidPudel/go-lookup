@@ -54,7 +54,11 @@ ch := make(chan int)
 ```
 
 ### waiting for the result
-By default, sends and receives are blocked, until both sides are ready. This allows goroutines to synchronize (wait), without additional synchronizations.
+By default, sends and receives operations are block execution of their goroutine where they heppened, until the other side is ready.  
+
+**Simple example**: calculating goroutine starts to execute algorithm, we encounter receive operation of channel that is in calculating goroutine, since algorithm is still processing (send operation is not encouintered), receive will block the further execution on its side, unitl we encounter send operation.
+
+**Second example**: calculating goroutine already encountered the result, but doesn't see that see that channel is ready to receive (doesn't encountered receive operation), so it will be blocked until, we call to receive a value.
 ```go
 
 s := []int{7, 2, 8, -9, 4, 0, 1}
@@ -68,9 +72,9 @@ x, y := <-ch, <-ch
 
 fmt.Println(x, y, x+y) // 17 -4 13
 ```
-> Here you may ask: "How does `x, y := <-ch, <-ch` works, that launching 2 goroutines with one channel, still asigns each variable the correct part of the `s` slice?"
+Here you may ask: _"How does `x, y := <-ch, <-ch` works, that launching 2 goroutines with one channel, still asigns each variable the **correct part** of the `s` slice?"_.  
 
-
+After starting both goroutines, we encounter first receive operation (block main function), meanwhile, there are 2 goroutines that are executed, and which ever executes first, will go to the first receiver, and we encounter next receiver and giving it the next _send_ data.
 ```go
 
 ```
