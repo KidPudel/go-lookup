@@ -31,7 +31,7 @@ While executing happens in a new goroutine.
 # Channels
 > Channels are typed conduct (pipe, tube), through which you can send and receive data with the help of channel operator `<-`
 
-### send data through channel
+### send data thsrough channel
 ```go
 func countSum(arr []int, ch chan int) {
   sum := 0
@@ -48,7 +48,29 @@ func countSum(arr []int, ch chan int) {
 rightSide := <-ch
 ```
 
-## Creating channel
+### Creating channel
 ```go
 ch := make(chan int)
+```
+
+### waiting for the result
+By default, sends and receives are blocked, until both sides are ready. This allows goroutines to synchronize (wait), without additional synchronizations.
+```go
+
+s := []int{7, 2, 8, -9, 4, 0, 1}
+ch := make(chan int)
+
+go countSum(s[len(s)/2:], ch)
+go countSum(s[:len(s)/2], ch)
+
+// waiting for sending
+x, y := <-ch, <-ch
+
+fmt.Println(x, y, x+y) // 17 -4 13
+```
+> Here you may ask: "How does `x, y := <-ch, <-ch` works, that launching 2 goroutines with one channel, still asigns each variable the correct part of the `s` slice?"
+
+
+```go
+
 ```
