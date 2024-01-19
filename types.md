@@ -11,7 +11,7 @@
 - `rune`, is for `int32` that represents _unicode code point_
 
 
-## Create your own types
+## Define your own types
 To define a new type:
 1. just start with `type`
 2. give it a name `foo`
