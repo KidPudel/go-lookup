@@ -166,12 +166,12 @@ func main() {
 	onFibonacciReceived := make(chan int)
 	onQuit := make(chan int)
 
-	go func (oFibonacciReceived, onQuit chan int) {
+	go func() {
 		for i := 0; i < 10; i++ {
 			fmt.Println(<-onFibonacciReceived)
 		}
 		onQuit <- 1
 	}
-	go fibonacci
+	go fibonacci(onFibonacciReceived, onQuit)
 }
 ```
