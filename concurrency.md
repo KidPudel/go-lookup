@@ -142,6 +142,8 @@ _And for that, `select` lets goroutine to wait on mutliple operations_.
 
 Remember, how goroutine will be blocked when we 1. send to the channel, until we encounter a receive. 2. Receive from the channel, until we send to it some value.  
 
+In other word, `select` is mechanism to `select` the triggered (first received value from channel) event.  
+
 ```go
 func eventListener(onSendMessage, onQuit) {
 	// listen...
