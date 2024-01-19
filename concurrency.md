@@ -134,3 +134,18 @@ func main() {
 }
 
 ```
+
+## Select
+Imagine we wait (or listen) on one of the asynchronious events, asynchroniously, meaning we need channels, and which is going to trigger, the corresponding handler will be executed.  
+
+_And for that, `select` lets goroutine to wait on mutliple operations_.  
+
+Remember, how goroutine will be blocked when we 1. send to the channel, until we encounter a receive. 2. Receive from the channel, until we send to it some value.  
+
+```go
+func eventListener(onSendMessage, onQuit) {
+	// listen...
+	for {
+	}
+}
+```
