@@ -145,7 +145,7 @@ Remember, how goroutine will be blocked when we 1. send to the channel, until we
 In other word, `select` is mechanism to `select` the triggered (first received value from channel) event.  
 
 ```go
-func fibonacciListener(onFibonacciReceived, onQuit) {
+func fibonacciListener(onFibonacciReceived, onQuit chan int) {
 	x, y := 0, 1
 	// listen
 	// if fibonacci received, then send next, the same as by default, but with select now we can at the same time listen to quit event
@@ -166,11 +166,12 @@ func main() {
 	onFibonacciReceived := make(chan int)
 	onQuit := make(chan int)
 
-	go func () {
+	go func (oFibonacciReceived, onQuit chan int) {
 		for i := 0; i < 10; i++ {
 			fmt.Println(<-onFibonacciReceived)
 		}
 		onQuit <- 1
 	}
+	go fibonacci
 }
 ```
