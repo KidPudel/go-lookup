@@ -155,7 +155,7 @@ func fibonacciListener(onFibonacciReceived, onQuit chan int) {
 				x, y = y, x+y
 			}
 			case <-onQuit {
-				fmt.Println("quit)
+				fmt.Println("quit")
 				return
 			}
 		}
