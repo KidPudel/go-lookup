@@ -151,13 +151,12 @@ func fibonacciListener(onFibonacciReceived, onQuit chan int) {
 	// if fibonacci received, then send next, the same as by default, but with select now we can at the same time listen to quit event
 	for {
 		select {
-			case onFibonacciReceived <- x {
+			case onFibonacciReceived <- x:
 				x, y = y, x+y
-			}
-			case <-onQuit {
+			
+			case <-onQuit:
 				fmt.Println("quit")
 				return
-			}
 		}
 	}
 }
@@ -174,4 +173,34 @@ func main() {
 	}
 	go fibonacci(onFibonacciReceived, onQuit)
 }
+```
+
+### Default selection
+`default` case in `select`, is a case that is run, when all other cases are blocked
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	tick := time.Tick(time.Millisecond * 100)
+	boom := time.After(time.Millisecond * 500)
+
+	for {
+		select {
+		case <-tick:
+			fmt.Println("tick")
+		case <-boom:
+			fmt.Println("BOOM")
+			return
+		default:
+			fmt.Println(".")
+			time.Sleep(time.Millisecond * 10)
+		}
+	}
+}
+
 ```
