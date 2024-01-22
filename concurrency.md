@@ -214,7 +214,7 @@ With Mutex, we can:
 1. `Lock`
 2. `Unlock`
 
-This will allow to synchronize the access, by letting letting other goroutine to `Lock` the mutex, only when it will be `Unlock`ed
+> **HOW IT WORKS**: This will allow to synchronize the access, by letting letting other goroutine to `Lock` the mutex, only when it will be `Unlock`ed
 ```go
 package main
 
