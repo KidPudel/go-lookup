@@ -204,3 +204,66 @@ func main() {
 }
 
 ```
+
+
+# Binary Tree Reading
+```go
+package main
+
+import (
+	"golang.org/x/tour/tree"
+	 "fmt"
+)
+
+// Walk walks the tree t sending all values
+// from the tree to the channel ch.
+func Walk(t *tree.Tree, ch chan int) {
+	// start printing from left most
+	if t.Left != nil {
+		Walk(t.Left, ch)
+	}
+	ch <- t.Value
+	if t.Right != nil {
+		Walk(t.Right, ch)
+	}
+
+}
+
+// Same determines whether the trees
+// t1 and t2 contain the same values.
+func Same(t1, t2 *tree.Tree) bool {
+	firstChannel := make(chan int)
+	secondChannel := make(chan int)
+	go Walk(t1, firstChannel)
+	go Walk(t2, secondChannel)
+	
+	isSame := true
+	
+	for i := 0; i < 10; i++ {
+		if <-firstChannel != <-secondChannel {
+			isSame = false
+		}
+	}
+	
+	return isSame
+	
+}
+
+func main() {
+	t := tree.New(3)
+	t2 := tree.New(2)
+	pipe := make(chan int, 10)
+	go Walk(t, pipe)
+	
+	for v := range pipe {
+		// + 1, because we have already read 1 (10 - 1)
+		if len(pipe) + 1 == cap(pipe) {
+			close(pipe)
+		}
+		fmt.Println(v)
+	}
+	
+	isSame := Same(t, t2)
+	fmt.Println(isSame)
+}
+```
