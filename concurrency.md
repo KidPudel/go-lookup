@@ -212,7 +212,7 @@ It works by counting active goroutines, by using:
  	- `Wait()`: waits until all goroutines are done
 > SIDE NOTE: if we want to pass a `wg`, use pointer
 
-> **NOTE**: since the execution is goes so fast, order of execution is NOT guaranteed, **_meaning that `wg.Wait()` could be reached faster than `wg.Add(1)`, and execution will be ended by this point._**  
+> **NOTE**: since the execution is goes so fast, order of execution is **NOT** guaranteed, **_meaning that `wg.Wait()` could be reached faster than `wg.Add(1)`, and execution will be ended by this point._**  
 > **THEREFORE**: It is a good practice to add to the group, _BEFORE_ launching goroutine!
 ```go
 func work(id int) {
@@ -224,6 +224,7 @@ func work(id int) {
 func main() {
 	var wg sync.WaitGroup
 	for i := 0; i < 10; i++ {
+		wg.Add(1)
 		go work(i, &wg) // func work(id int, wg *sync.WorkGroup)
 	}
 	wg.Wait() // waits until all goroutines are done
@@ -235,8 +236,8 @@ func main() {
 	var wg sync.WaitGroup
 
 	for i := 0; i < 10; i++ {
+		wg.Add(1)
 		go func {
-			wg.Add(1)
 			work(i)
 			wg.Done()
 		}
