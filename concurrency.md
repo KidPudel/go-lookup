@@ -220,7 +220,7 @@ func work(id int) {
 }
 
 func main() {
-	wg := sync.WaitGroup()
+	var wg sync.WaitGroup
 	for i := 0; i < 10; i++ {
 		go work(i, &wg) // func work(id int, wg *sync.WorkGroup)
 	}
@@ -230,7 +230,7 @@ func main() {
 // or
 
 func main() {
-	wg := sync.WaitGroup()
+	var wg sync.WaitGroup
 
 	for i := 0; i < 10; i++ {
 		go func {
