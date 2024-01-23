@@ -205,6 +205,43 @@ func main() {
 
 ```
 
+# Waiting for a group of goroutines
+To wait for all goroutines to finish, use `sync.WaitGroup`.  
+It works by counting active goroutines, by using:
+	- `Add(n)` and `Done()`
+ 	- `Wait()`: waits until all goroutines are done
+> SIDE NOTE: if we want to pass a `wg`, use pointer
+
+```go
+func work(id int) {
+	fmt.Println("started", id)
+	time.Afet(time.Second)
+	fmt.Println("done", id)
+}
+
+func main() {
+	wg := sync.WaitGroup()
+	for i := 0; i < 10; i++ {
+		go work(i, &wg) // func work(id int, wg *sync.WorkGroup)
+	}
+	wg.Wait() // waits until all goroutines are done
+}
+
+// or
+
+func main() {
+	wg := sync.WaitGroup()
+
+	for i := 0; i < 10; i++ {
+		go func {
+			wg.Add(1)
+			work(i)
+			wg.Done()
+		}
+	}
+	wg.Wait() // waits until all goroutines are done
+}
+```
 
 # Mutex
 If we want to restrict an access of a value, between goroutine, this is called - _**mutual exclusion**_.
