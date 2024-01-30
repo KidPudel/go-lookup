@@ -2,7 +2,8 @@ function closure is a function value that references variable from outside its b
 
 Go functions may be closures.  
 
-The functions may access and assign to the referenced values
+**The functions may access and assign to the referenced values**
+
 > NOTE: function is bound to the variables (has their own), for example
 
 
