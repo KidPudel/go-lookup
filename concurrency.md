@@ -170,8 +170,8 @@ func main() {
 			fmt.Println(<-onFibonacciReceived)
 		}
 		onQuit <- 1
-	}
-	go fibonacci(onFibonacciReceived, onQuit)
+	}()
+	go fibonacciListener(onFibonacciReceived, onQuit)
 }
 ```
 
