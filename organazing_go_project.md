@@ -43,7 +43,7 @@ $ go install github.com/someuser/modname@latest
 
 to list all commands
 ```bash
-go help [command you want]
+go help [command you want to learn]
 ```
 
 ## Package or command with supporting packages
