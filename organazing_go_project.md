@@ -1,6 +1,6 @@
-- _packages_: directory with go files
+- _packages_: directory (folder) with go files
 - _module_: collection of packages that has built in dependencies and versioning
-- _internal_: directary that makes packages importable only by code rooted at parent of internal
+- _internal_: directary that makes packages importable only by code rooted at parent of `internal`
 
 ## Basic package
 The project consists of a single module, which consists of a single package.  
@@ -37,9 +37,11 @@ Assuming this directory is uploaded to a GitHub repository at github.com/someuse
 module github.com/someuser/modname
 ```
 And a user should be able to install it on their machine with:
-```
+```bash
 $ go install github.com/someuser/modname@latest
 ```
+
+`go help`: to list all commands 
 
 ## Package or command with supporting packages
 When package is growing big, you can split functionality in package into other packages.  
@@ -60,7 +62,7 @@ project-root-directory/
 If we want in `main.go` to import `auth` package: 
 ```go
 import "github.com/someuser/modname/internal/auth"
-```  
+```
 
 ## Multiple packages and importing
 ```
