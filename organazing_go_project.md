@@ -41,7 +41,10 @@ And a user should be able to install it on their machine with:
 $ go install github.com/someuser/modname@latest
 ```
 
-`go help`: to list all commands 
+to list all commands
+```bash
+go help
+```
 
 ## Package or command with supporting packages
 When package is growing big, you can split functionality in package into other packages.  
