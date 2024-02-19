@@ -1,3 +1,8 @@
+
+# Bufio
+bufio is the convenient package for reading data
+
+```go
 package main
 
 import (
@@ -29,3 +34,4 @@ func main() {
 			break
 		}
 }
+```
