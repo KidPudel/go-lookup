@@ -135,3 +135,35 @@ func describe(i interface{}) {
   fmt.Printf("(%v, %T)\n", i, i)
 }
 ```
+
+# Simple showcase
+
+```go
+package main
+
+import "fmt"
+
+type Adder interface {
+	Add() int
+}
+
+type CustomAdder struct {
+	x int
+	y int
+}
+
+func (v CustomAdder) Add() int {
+	return v.x + v.y
+}
+
+func getResultFromAdder(adder Adder) {
+	fmt.Println(adder.Add())
+}
+
+func main() {
+	customAdder := CustomAdder{x: 5, y: 7}
+
+	getResultFromAdder(customAdder)
+}
+
+```
