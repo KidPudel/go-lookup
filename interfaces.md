@@ -198,3 +198,5 @@ func main() {
 }
 
 ```
+
+> And now we can pass any type that implements interface
