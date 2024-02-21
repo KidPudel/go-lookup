@@ -1,4 +1,30 @@
-- camelCase: what you don't want to export (make importable)
-- PascakCase: what you want to export
-- SCREAMING_SNAKE_CASE: constants
-- is, has, can, allow: bool
+- Functions and Variables
+  - Use camel case, exported functions and variables start with uppercase. (unexported/private are lowercase)
+  - Constant should use all capital letters and use underscore _ to separate words. Eg. INT_MAX
+  - If variable type is bool, its name should start with Has, Is, Can or Allow, etc.
+  - Avoid cryptic abbreviations. Eg: usrAge := 25
+- what you don't want to export (make importable)
+  - camelCase
+- what you want to export
+  - PascakCase
+- constants
+  - SCREAMING_SNAKE_CASE
+- bool
+  - is, has, can, allow
+- package 
+  - in src/encoding/base64 is imported as "encoding/base64" but has name base64, not encoding_base64 and not encodingBase64
+  - single word
+- Interface
+  - Read**er**, Writ**er**, Add**er**
+  - use MixedCaps or mixedCaps rather than underscores to write multiword names.
+  - Use prefix I Eg. IUser, IRead, etc. One con - searching for interfaces across codebase is harder due to I
+  - Use suffix Interface. Eg. UserInterface, ReadInterface, etc.
+- file name
+  - Generally, file names are single lowercase words.
+  - Go follows a convention where source files are all lower case with underscore separating multiple words.
+  - Compound file names are separated with `_`
+  - File names that begin with “.” or “_” are ignored by the go tool
+  - Test files in Go come with suffix `_test.go` . These are only compiled and run by the `go test` tool.
+  - Files with os and architecture specific suffixes automatically follow those same constraints, e.g. `name_linux.go` will only build on linux, `name_amd64.go` will only build on amd64.
+
+https://www.mohitkhare.com/blog/go-naming-conventions/
